@@ -1,0 +1,215 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather 🌦️</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="weather-container">
+      <div class="left">
+        <div class="top">
+          <div class="temp">
+            <div class="upper">
+              <h2 id="current-city">Delhi</h2>
+              <div class="time-info">
+                <span id="sunrise">Sunrise: 07:19</span>
+                <span id="sunset">Sunset: 19:19</span>
+              </div>
+            </div>
+            <h2 id="today">Today - 11 Dec 2024</h2>
+            <div class="current-temp">
+              <h1>22°C</h1>
+              <p id="current-weather">Sunny</p>
+            </div>
+          </div>
+        </div>
+        <div class="clock-container">
+          <div class="clock">
+            <div class="hand" id="clock-hand"></div>
+          </div>
+          <div class="real-time" id="real-time"></div>
+        </div>
+      </div>
+      <div class="right">
+        <div class="search">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Enter city name..."
+          />
+          <button onclick="getWeather()">Search Weather</button>
+        </div>
+
+        <div class="forecast-container">
+          <h3 class="forecast-heading">Upcoming hours</h3>
+
+          <div class="time-temp-values" id="timeTempValues"></div>
+        </div>
+
+        <div class="more_details">
+          <!-- Humidity Card -->
+          <div class="weather-card" id="humidity-card">
+            <h3>Humidity <span>💧</span></h3>
+            <p class="value">0%</p>
+            <div class="graph-labels">
+              <span class="label">Low</span>
+              <span class="label">Moderate</span>
+              <span class="label">High</span>
+            </div>
+            <div class="graph">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+            </div>
+          </div>
+
+          <!-- Feels Like Card -->
+          <div class="weather-card" id="feels-like-card">
+            <h3>Feels Like <span>🌡️</span></h3>
+            <p class="value">0</p>
+            <div class="graph-labels">
+              <span class="label">Cold</span>
+              <span class="label">Warm</span>
+              <span class="label">Hot</span>
+            </div>
+            <div class="graph">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+            </div>
+          </div>
+
+          <!-- Air Pressure Card -->
+          <div class="weather-card" id="pressure-card">
+            <h3>Air Pressure <span>📏</span></h3>
+            <p class="value">0 hPa</p>
+            <div class="graph-labels">
+              <span class="label">Low</span>
+              <span class="label">Normal</span>
+              <span class="label">High</span>
+            </div>
+            <div class="graph">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+            </div>
+          </div>
+
+          <!-- UV Index Card -->
+          <div class="weather-card" id="uv-card">
+            <h3>UV Index <span>🌞</span></h3>
+            <p class="value">0</p>
+            <div class="graph-labels">
+              <span class="label">Low</span>
+              <span class="label">Moderate</span>
+              <span class="label">High</span>
+            </div>
+            <div class="graph">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+            </div>
+          </div>
+
+          <!-- Visibility Card -->
+          <div class="weather-card" id="visibility-card">
+            <h3>Visibility <span>👁️</span></h3>
+            <p class="value">0 km</p>
+            <div class="graph-labels">
+              <span class="label">Poor</span>
+              <span class="label">Moderate</span>
+              <span class="label">Clear</span>
+            </div>
+            <div class="graph">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+            </div>
+          </div>
+          <!-- AQI Card -->
+          <div class="weather-card" id="aqi-card">
+            <h3>Air Quality Index <span>🌫️</span></h3>
+            <p class="value">0</p>
+            <div class="graph-labels">
+              <span class="label">Good</span>
+              <span class="label">Moderate</span>
+              <span class="label">Unhealthy</span>
+            </div>
+            <div class="graph">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+            </div>
+          </div>
+
+          <!-- Chance of Rain Card -->
+          <div class="weather-card" id="rain-card">
+            <h3>Chance of Rain <span>🌧️</span></h3>
+            <p class="value">0%</p>
+            <div class="graph-labels">
+              <span class="label">Low</span>
+              <span class="label">Moderate</span>
+              <span class="label">High</span>
+            </div>
+            <div class="graph">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+            </div>
+          </div>
+
+          <!-- Wind Speed Card -->
+          <div class="weather-card" id="wind-speed-card">
+            <h3>Wind Speed <span>🌬️</span></h3>
+            <p class="value">0 km/h</p>
+            <div class="graph-labels">
+              <span class="label">Calm</span>
+              <span class="label">Breezy</span>
+              <span class="label">Windy</span>
+            </div>
+            <div class="graph">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+    <script src="top.js"></script>
+    <script src="clock.js"></script>
+    <script src="search.js"></script>
+    <script src="forecast.js"></script>
+    <script src="weather-card.js"></script>
+    <script src="fall.js"></script>
+  </body>
+</html>
